@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1735542814293,
+      "tag": "0000_condemned_blue_blade",
+      "breakpoints": true
+    }
+  ]
+}
