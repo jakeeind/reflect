@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Import Star Resolution</title>
+	<title>Reflection</title>
 </svelte:head>
 
 <div class="mx-auto mt-5 max-w-6xl">

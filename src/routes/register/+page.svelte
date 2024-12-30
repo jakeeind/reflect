@@ -4,14 +4,19 @@
 	import Password from 'phosphor-svelte/lib/Password';
 	import AddressBook from 'phosphor-svelte/lib/AddressBook';
 	import { superForm } from 'sveltekit-superforms';
+	import { valibotClient } from 'sveltekit-superforms/adapters';
+	import { userSchema } from '$lib/schemas/user.schema';
 	let { data }: { data: PageData } = $props();
-	const { form: formData } = superForm(data.form);
+	const form = superForm(data.form, {
+    validators: valibotClient(userSchema),
+  });
+  const { form: formData, errors, enhance } = form;
 </script>
 
 <div class="card mx-auto max-w-xl bg-base-300 shadow-xl">
 	<div class="card-body gap-5">
 		<h1 class="text-center text-4xl">Register</h1>
-		<form method="post">
+		<form method="post" use:enhance>
 			<div class="flex flex-col gap-2">
 				<span>User Info</span>
 				<label class="input input-bordered flex items-center gap-2">
@@ -52,10 +57,14 @@
 					<textarea
 						class="textarea textarea-bordered h-[250px]"
 						placeholder="New Year's Resolutions"
-						required
 						bind:value={$formData.resolution}
 						name="resolution"
 					></textarea>
+					<span class="label text-error">
+						{#if $errors.resolution}
+							{$errors.resolution}
+						{/if}
+					</span>
 				</label>
 				<button class="btn btn-primary mt-5"> Register </button>
 			</div>
