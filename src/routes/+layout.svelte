@@ -7,6 +7,6 @@
 	<title>Reflection</title>
 </svelte:head>
 
-<div class="mx-auto mt-5 max-w-6xl">
+<div class="mt-5 px-5">
 	{@render children()}
 </div>

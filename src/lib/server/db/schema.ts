@@ -8,6 +8,17 @@ export const user = sqliteTable('user', {
 	roles: text('roles').notNull()
 });
 
+export const reflection = sqliteTable('reflection', {
+	id: text('id').primaryKey(),
+	createdBy: text('created_by')
+		.notNull()
+		.references(() => user.id),
+	userId: text('user_id')
+		.notNull()
+		.references(() => user.id),
+	description: text('description').notNull()
+});
+
 export const session = sqliteTable('session', {
 	id: text('id').primaryKey(),
 	userId: text('user_id')
